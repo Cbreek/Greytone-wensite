@@ -6,10 +6,16 @@ import { generateObservation } from '../../lib/ai'
 
 const TEMPLATE_OPTIONS = TEMPLATES.map(t => ({ id: t.id, label: t.label, requiresReferrer: t.requiresReferrer }))
 
+const CITY_AREAS = [
+  'Orange County',
+  'Los Angeles County',
+  'San Diego County',
+] as const
+
 const BLANK: ProspectData = {
   firstName: '',
   businessName: '',
-  cityArea: 'Newport Beach',
+  cityArea: '',
   industry: '',
   websiteUrl: '',
   referrerName: '',
@@ -118,20 +124,16 @@ export function ProspectForm({ onGenerate }: Props) {
       <div className="grid grid-cols-2 gap-3">
         <div>
           <label className={labelClass}>City / Area</label>
-          <input
-            type="text"
-            list="city-areas"
+          <select
             value={data.cityArea}
             onChange={e => set('cityArea', e.target.value)}
-            placeholder="Newport Beach"
             className={inputClass}
-          />
-          <datalist id="city-areas">
-            <option value="Newport Beach" />
-            <option value="Orange County" />
-            <option value="Los Angeles County" />
-            <option value="San Diego County" />
-          </datalist>
+          >
+            <option value="">Select…</option>
+            {CITY_AREAS.map(area => (
+              <option key={area} value={area}>{area}</option>
+            ))}
+          </select>
         </div>
         <div>
           <label className={labelClass}>Industry</label>
