@@ -36,14 +36,17 @@ export async function createGmailDraft(params: {
 
   const { to, subject, htmlBody } = params
 
-  const raw = btoa(
+  const message =
     `To: ${to}\r\n` +
     `Subject: ${subject}\r\n` +
     `MIME-Version: 1.0\r\n` +
     `Content-Type: text/html; charset=UTF-8\r\n` +
     `\r\n` +
     htmlBody
-  ).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '')
+
+  const bytes = new TextEncoder().encode(message)
+  const binString = Array.from(bytes, b => String.fromCharCode(b)).join('')
+  const raw = btoa(binString).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '')
 
   const response = await fetch(
     'https://gmail.googleapis.com/gmail/v1/users/me/drafts',
