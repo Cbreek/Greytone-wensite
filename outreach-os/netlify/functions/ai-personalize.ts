@@ -33,22 +33,28 @@ Prospect details:
 
 Write ONLY the observation paragraph — no greeting, no sign-off, no extra commentary. 2-3 sentences max. Start directly with the observation.`
 
-  const response = await fetch('https://api.anthropic.com/v1/messages', {
-    method: 'POST',
-    headers: {
-      'x-api-key': apiKey,
-      'anthropic-version': '2023-06-01',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      model: 'claude-haiku-4-5-20251001',
-      max_tokens: 200,
-      messages: [{ role: 'user', content: prompt }],
-    }),
-  })
+  let response: Response
+  try {
+    response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'claude-haiku-4-5-20251001',
+        max_tokens: 200,
+        messages: [{ role: 'user', content: prompt }],
+      }),
+    })
+  } catch (err: any) {
+    return { statusCode: 502, body: JSON.stringify({ error: `Network error: ${err.message}` }) }
+  }
 
   if (!response.ok) {
-    return { statusCode: 502, body: JSON.stringify({ error: 'AI request failed' }) }
+    const errText = await response.text().catch(() => '')
+    return { statusCode: 502, body: JSON.stringify({ error: `AI request failed (${response.status}): ${errText}` }) }
   }
 
   const result = await response.json() as any
