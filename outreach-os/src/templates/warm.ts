@@ -6,7 +6,7 @@ export const warmTemplate: Template = {
   label: 'Warm / Known Leads',
   requiresReferrer: false,
   subjectLine: (data: ProspectData) =>
-    `A thought about ${data.businessName || '[Business Name]'}`,
+    `I had an idea for ${data.businessName || '[Business Name]'}`,
 
   generateHtml: (data: ProspectData) => {
     const name = data.firstName || '[First Name]'

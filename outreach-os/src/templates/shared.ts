@@ -65,21 +65,21 @@ export function buildEmailHtml(params: {
 
         <!-- BODY -->
         <tr>
-          <td style="background:#f5f0e8;padding:44px 48px 40px;">
+          <td style="background:#f5f0e8;padding:64px 48px 40px;">
 
             <p style="margin:0 0 28px;font-family:Georgia,'Times New Roman',serif;font-size:16px;color:#4a443c;line-height:1.75;">${greeting}</p>
 
             ${paraHtml}
 
             ${showBullets ? `
-            <p style="margin:0 0 16px;font-family:Georgia,'Times New Roman',serif;font-size:11px;font-weight:400;letter-spacing:0.22em;text-transform:uppercase;color:#8c7d68;">A Few Ways I Can Help</p>
+            <p style="margin:0 0 16px;font-family:Georgia,'Times New Roman',serif;font-size:16px;color:#4a443c;line-height:1.75;">A few ways I can help:</p>
             <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:28px;">
               ${bulletItems}
             </table>` : ''}
 
             ${closingParagraph ? `<p style="margin:0 0 32px;font-family:Georgia,'Times New Roman',serif;font-size:16px;color:#4a443c;line-height:1.75;">${closingParagraph}</p>` : ''}
 
-            <p style="margin:0 0 36px;font-family:Georgia,'Times New Roman',serif;font-size:16px;color:#4a443c;line-height:1.75;">I'd be happy to share a few ideas I already have for you. Look forward to connecting.</p>
+            <p style="margin:0 0 36px;font-family:Georgia,'Times New Roman',serif;font-size:16px;color:#4a443c;line-height:1.75;">I'd be happy to share a few ideas I already have for your business. Let's chat — I look forward to connecting.</p>
 
             <!-- CTA -->
             <table cellpadding="0" cellspacing="0" border="0" style="margin-bottom:40px;">
