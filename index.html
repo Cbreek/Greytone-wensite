@@ -1,981 +1,125 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Greytone Digital — AI-Powered Growth Studio | Orange County, CA</title>
-  <meta name="description" content="Greytone Digital builds AI-powered websites and business systems for contractors, realtors, and service businesses in Orange County, CA. 30-minute discovery call. No pitch deck.">
-  <meta property="og:title" content="Greytone Digital — Put your website to work.">
-  <meta property="og:description" content="AI-powered websites and business systems built for growth. Based in Orange County, California.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.greytonedigital.com">
-  <link rel="canonical" href="https://www.greytonedigital.com">
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <style>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Greytone Digital — AI-Powered Websites &amp; Business Development Systems</title>
+    <meta name="description" content="Greytone Digital builds AI-powered websites and business development systems for small and mid-size businesses in Los Angeles and Orange County — capturing leads, automating follow-up, and turning your site into a 24/7 growth engine." />
+    <meta name="keywords" content="Greytone Digital, AI-powered websites, AI website design, business development systems, AI business systems, website automation, Orange County AI web design, Los Angeles AI web design, AI integrations for business, website modernization, small business AI, lead capture website, automated follow-up, AI branding" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Greytone Digital" />
+    <link rel="canonical" href="https://www.greytonedigital.com/" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
-    /* ================================================
-       GREYTONE DIGITAL — PALETTE OVERRIDES
-       Shift parchment tones to cool gray
-    ================================================ */
-    :root {
-      --parchment: #f5f5f5;
-      --parchment-dark: #ebebeb;
-    }
+    <!-- Geo / Local SEO -->
+    <meta name="geo.region" content="US-CA" />
+    <meta name="geo.placename" content="Los Angeles, California" />
+    <meta name="geo.position" content="34.0522;-118.2437" />
+    <meta name="ICBM" content="34.0522, -118.2437" />
 
-    /* ================================================
-       HERO — split layout, dark left / image right
-    ================================================ */
-    .gd-hero {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 100vh;
-      overflow: hidden;
-    }
-    .gd-hero__text {
-      background: var(--charcoal);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 9rem 5rem 8rem 6rem;
-      position: relative;
-      z-index: 1;
-    }
-    .gd-hero__image {
-      background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1400&q=85');
-      background-size: cover;
-      background-position: center 55%;
-      position: relative;
-    }
-    .gd-hero__image::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to right, rgba(26,26,26,0.30) 0%, transparent 60%);
-    }
-    .gd-hero__eyebrow {
-      font-size: 0.62rem;
-      font-weight: 600;
-      letter-spacing: 0.38em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 2.75rem;
-    }
-    .gd-hero__wordmark {
-      font-family: var(--font-display);
-      font-size: clamp(4.5rem, 7vw, 7.5rem);
-      font-weight: 700;
-      line-height: 0.88;
-      color: #fff;
-      letter-spacing: -0.02em;
-      margin: 0 0 0.25rem;
-    }
-    .gd-hero__wordmark-sub {
-      font-family: var(--font-display);
-      font-size: clamp(1.25rem, 2vw, 2rem);
-      font-weight: 300;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.38);
-      margin-bottom: 3rem;
-    }
-    .gd-hero__headline {
-      font-family: var(--font-display);
-      font-size: clamp(1.25rem, 2vw, 1.75rem);
-      font-weight: 400;
-      color: rgba(255,255,255,0.88);
-      line-height: 1.35;
-      margin-bottom: 1.25rem;
-      max-width: 400px;
-    }
-    .gd-hero__sub {
-      font-size: 0.875rem;
-      color: rgba(255,255,255,0.42);
-      line-height: 1.85;
-      max-width: 360px;
-      margin-bottom: 3rem;
-      font-weight: 300;
-    }
-    .gd-hero__ctas {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
+    <!-- Open Graph (Facebook, LinkedIn, iMessage, WhatsApp, Slack) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content="https://www.greytonedigital.com/" />
+    <meta property="og:title" content="Greytone Digital — AI-Powered Websites &amp; Business Development Systems" />
+    <meta property="og:description" content="AI-powered websites and business development systems that capture leads, automate follow-up, and help small businesses in Los Angeles and Orange County compete at a level that used to require an entire corporate team." />
+    <meta property="og:image" content="https://www.greytonedigital.com/og-preview.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Greytone Digital — AI-Powered Websites &amp; Business Development Systems" />
+    <meta property="og:site_name" content="Greytone Digital" />
 
-    /* ================================================
-       STRIP
-    ================================================ */
-    .gd-strip {
-      background: #111;
-      padding: 1.1rem 2rem;
-      text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.05);
-    }
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Greytone Digital — AI-Powered Websites &amp; Business Development Systems" />
+    <meta name="twitter:description" content="AI-powered websites and business development systems that capture leads, automate follow-up, and help small businesses in Los Angeles and Orange County grow around the clock." />
+    <meta name="twitter:image" content="https://www.greytonedigital.com/og-preview.png" />
 
-    /* ================================================
-       INDUSTRY CARDS
-    ================================================ */
-    .gd-industries {
-      padding: 100px 0;
-      background: #f5f5f5;
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Greytone Digital",
+      "description": "AI-powered websites and business development systems for small and mid-size businesses. Specializing in lead capture, website automation, AI integrations, and business development systems in Los Angeles and Orange County.",
+      "url": "https://www.greytonedigital.com",
+      "logo": "https://www.greytonedigital.com/favicon.svg",
+      "image": "https://www.greytonedigital.com/og-preview.png",
+      "email": "hello@greytonedigital.com",
+      "foundingDate": "2026",
+      "priceRange": "$$",
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Los Angeles",
+          "containedInPlace": { "@type": "State", "name": "California" }
+        },
+        {
+          "@type": "City",
+          "name": "Orange County",
+          "containedInPlace": { "@type": "State", "name": "California" }
+        }
+      ],
+      "knowsAbout": [
+        "AI-Powered Websites",
+        "Business Development Systems",
+        "Website Automation",
+        "AI Business Systems",
+        "Lead Capture Websites",
+        "AI Integrations for Business",
+        "Website Modernization"
+      ],
+      "sameAs": [
+        "https://www.greytonedigital.com"
+      ]
     }
-    .gd-industry-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: rgba(26,26,26,0.08);
-      border: 1px solid rgba(26,26,26,0.08);
-      margin-top: 4rem;
-    }
-    .gd-industry-card {
-      background: #f5f5f5;
-      padding: 3rem 2.5rem;
-      transition: background 0.2s ease;
-      cursor: default;
-    }
-    .gd-industry-card:hover {
-      background: var(--parchment-dark);
-    }
-    .gd-industry-card__icon {
-      width: 36px;
-      height: 36px;
-      margin-bottom: 1.75rem;
-      opacity: 0.35;
-    }
-    .gd-industry-card__name {
-      font-family: var(--font-display);
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--charcoal);
-      margin-bottom: 0.875rem;
-    }
-    .gd-industry-card__desc {
-      font-size: 0.84rem;
-      color: var(--gray);
-      line-height: 1.85;
-      font-weight: 300;
-    }
+    </script>
+    <style>
+      /* Hide Netlify free-tier badge */
+      [data-netlify-badge],
+      .netlify-badge,
+      a[href*="app.netlify.com"],
+      a[href*="netlify.com/signup"],
+      iframe[src*="netlify.com/badge"],
+      div[class*="badge"][class*="netlify"],
+      div[id*="netlify"] { display: none !important; }
 
-    /* ================================================
-       MISSED CALL CALCULATOR
-    ================================================ */
-    .gd-calc {
-      padding: 100px 0;
-      background: var(--charcoal);
-    }
-    .gd-calc__inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 7rem;
-      align-items: start;
-    }
-    .gd-calc__eyebrow {
-      font-size: 0.62rem;
-      font-weight: 600;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-      color: var(--gold);
-      display: block;
-      margin-bottom: 1.25rem;
-    }
-    .gd-calc__title {
-      font-family: var(--font-display);
-      font-size: clamp(1.75rem, 3vw, 2.75rem);
-      font-weight: 600;
-      color: #fff;
-      line-height: 1.2;
-      margin-bottom: 1.75rem;
-    }
-    .gd-calc__desc {
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.42);
-      line-height: 1.9;
-      font-weight: 300;
-    }
-    .gd-calc__quote {
-      margin-top: 3.5rem;
-      padding-top: 2.5rem;
-      border-top: 1px solid rgba(255,255,255,0.07);
-    }
-    .gd-calc__quote-text {
-      font-family: var(--font-display);
-      font-style: italic;
-      font-size: 1rem;
-      color: rgba(255,255,255,0.62);
-      line-height: 1.65;
-      margin-bottom: 1rem;
-    }
-    .gd-calc__quote-attr {
-      font-size: 0.65rem;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-    .gd-calc__panel {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      padding: 3rem;
-    }
-    .gd-calc__field {
-      margin-bottom: 1.75rem;
-    }
-    .gd-calc__field label {
-      display: block;
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.4);
-      margin-bottom: 0.625rem;
-    }
-    .gd-calc__input {
-      width: 100%;
-      box-sizing: border-box;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      color: #fff;
-      padding: 0.875rem 1rem;
-      font-size: 1rem;
-      font-family: var(--font-body, sans-serif);
-      outline: none;
-      transition: border-color 0.18s;
-      -webkit-appearance: none;
-      border-radius: 0;
-    }
-    .gd-calc__input:focus {
-      border-color: var(--gold);
-    }
-    .gd-calc__input::placeholder {
-      color: rgba(255,255,255,0.2);
-    }
-    .gd-calc__btn {
-      width: 100%;
-      padding: 1rem;
-      background: var(--gold);
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      font-family: var(--font-body, sans-serif);
-      transition: opacity 0.2s;
-      margin-top: 0.5rem;
-    }
-    .gd-calc__btn:hover { opacity: 0.88; }
-    .gd-calc__result {
-      display: none;
-      margin-top: 2rem;
-      padding: 2rem;
-      border-left: 2px solid var(--gold);
-      background: rgba(255,255,255,0.03);
-    }
-    .gd-calc__result.active { display: block; }
-    .gd-calc__result-label {
-      font-size: 0.62rem;
-      font-weight: 600;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.5rem;
-    }
-    .gd-calc__result-number {
-      font-family: var(--font-display);
-      font-size: 2.75rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 0.5rem;
-      line-height: 1;
-    }
-    .gd-calc__result-sub {
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.35);
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-    }
-    .gd-calc__result-link {
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(201,168,118,0.3);
-      padding-bottom: 2px;
-    }
-
-    /* ================================================
-       ABOUT / FOUNDER
-    ================================================ */
-    .gd-about {
-      padding: 100px 0;
-      background: var(--parchment);
-    }
-    .gd-about__grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 7rem;
-      align-items: center;
-    }
-    .gd-about__img {
-      aspect-ratio: 4/5;
-      background: var(--parchment-dark);
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .gd-about__img-placeholder {
-      font-family: var(--font-display);
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(26,26,26,0.22);
-    }
-    .gd-about__credentials {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: rgba(26,26,26,0.08);
-      margin-top: 3rem;
-    }
-    .gd-about__cred {
-      background: var(--parchment);
-      padding: 1.5rem;
-    }
-    .gd-about__cred-num {
-      font-family: var(--font-display);
-      font-size: 1.75rem;
-      font-weight: 700;
-      color: var(--charcoal);
-      line-height: 1;
-      margin-bottom: 0.375rem;
-    }
-    .gd-about__cred-label {
-      font-size: 0.72rem;
-      color: var(--gray);
-      line-height: 1.5;
-      font-weight: 300;
-    }
-    .gd-about__phil {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: rgba(26,26,26,0.08);
-      margin-top: 3rem;
-    }
-    .gd-about__phil-item {
-      background: var(--parchment);
-      padding: 1.75rem 1.5rem;
-      text-align: center;
-    }
-    .gd-about__phil-item--dark {
-      background: var(--charcoal);
-    }
-    .gd-about__phil-title {
-      font-family: var(--font-display);
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--charcoal);
-      margin-bottom: 0.5rem;
-    }
-    .gd-about__phil-title--light { color: #fff; }
-    .gd-about__phil-desc {
-      font-size: 0.78rem;
-      color: var(--gray);
-      line-height: 1.75;
-      font-weight: 300;
-    }
-    .gd-about__phil-desc--light { color: rgba(255,255,255,0.42); }
-
-    /* ================================================
-       CONTACT
-    ================================================ */
-    .gd-contact {
-      padding: 100px 0;
-      background: #f5f5f5;
-    }
-    .gd-contact__inner {
-      display: grid;
-      grid-template-columns: 5fr 7fr;
-      gap: 7rem;
-      align-items: start;
-    }
-    .gd-contact__label {
-      font-size: 0.62rem;
-      font-weight: 600;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-      color: var(--gold);
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 1.5rem;
-    }
-    .gd-contact__label::before {
-      content: '';
-      display: block;
-      width: 24px;
-      height: 1px;
-      background: var(--gold);
-      flex-shrink: 0;
-    }
-    .gd-contact__title {
-      font-family: var(--font-display);
-      font-size: clamp(1.75rem, 3vw, 2.75rem);
-      font-weight: 600;
-      color: var(--charcoal);
-      line-height: 1.15;
-      margin-bottom: 1.5rem;
-    }
-    .gd-contact__note {
-      font-size: 0.88rem;
-      color: var(--gray);
-      line-height: 1.8;
-      font-weight: 300;
-    }
-    .gd-options-label {
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--charcoal);
-      margin-bottom: 0.625rem;
-      display: block;
-    }
-    .gd-options-hint {
-      font-size: 0.78rem;
-      color: var(--gray);
-      margin-bottom: 1.5rem;
-      font-weight: 300;
-    }
-    .gd-options {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.625rem;
-      margin-bottom: 2.5rem;
-    }
-    .gd-option {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
-      padding: 1.125rem 1.25rem;
-      border: 1px solid rgba(26,26,26,0.1);
-      cursor: pointer;
-      transition: border-color 0.15s, background 0.15s;
-      background: #fff;
-      user-select: none;
-    }
-    .gd-option:hover {
-      border-color: rgba(26,26,26,0.35);
-      background: #f5f5f5;
-    }
-    .gd-option.selected {
-      border-color: var(--charcoal);
-      background: #e8e8e8;
-    }
-    .gd-option__check {
-      flex-shrink: 0;
-      width: 15px;
-      height: 15px;
-      border: 1px solid rgba(26,26,26,0.25);
-      position: relative;
-      margin-top: 2px;
-      transition: background 0.15s, border-color 0.15s;
-    }
-    .gd-option.selected .gd-option__check {
-      background: var(--charcoal);
-      border-color: var(--charcoal);
-    }
-    .gd-option.selected .gd-option__check::after {
-      content: '';
-      position: absolute;
-      top: 2px;
-      left: 4px;
-      width: 4px;
-      height: 7px;
-      border: 1.5px solid #fff;
-      border-top: none;
-      border-left: none;
-      transform: rotate(45deg);
-    }
-    .gd-option__text {
-      font-size: 0.82rem;
-      color: var(--charcoal);
-      line-height: 1.5;
-    }
-    .gd-contact__cta {
-      display: block;
-      width: 100%;
-      box-sizing: border-box;
-      padding: 1.125rem;
-      background: var(--charcoal);
-      color: #fff;
-      text-align: center;
-      text-decoration: none;
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      font-family: var(--font-body, sans-serif);
-      transition: background 0.2s;
-      margin-bottom: 1.25rem;
-    }
-    .gd-contact__cta:hover { background: #2c2c2c; }
-    .gd-contact__email-line {
-      text-align: center;
-    }
-    .gd-contact__email-line a {
-      font-size: 0.8rem;
-      color: var(--gray);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(26,26,26,0.15);
-      padding-bottom: 1px;
-      transition: color 0.15s, border-color 0.15s;
-    }
-    .gd-contact__email-line a:hover {
-      color: var(--charcoal);
-      border-color: rgba(26,26,26,0.4);
-    }
-
-    /* ================================================
-       FOOTER CTA BANNER
-    ================================================ */
-    .gd-cta {
-      background: var(--charcoal);
-      padding: 7rem 2rem;
-      text-align: center;
-    }
-    .gd-cta__eyebrow {
-      font-size: 0.62rem;
-      font-weight: 600;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--gold);
-      display: block;
-      margin-bottom: 1.75rem;
-    }
-    .gd-cta__title {
-      font-family: var(--font-display);
-      font-size: clamp(2.25rem, 4.5vw, 3.75rem);
-      font-weight: 600;
-      color: #fff;
-      line-height: 1.1;
-      margin-bottom: 1.5rem;
-    }
-    .gd-cta__sub {
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.38);
-      margin-bottom: 3rem;
-      line-height: 1.8;
-    }
-
-    /* ================================================
-       RESPONSIVE
-    ================================================ */
-    @media (max-width: 1024px) {
-      .gd-hero {
-        grid-template-columns: 1fr;
-        min-height: auto;
+      /* Instant render for crawlers/email previewers that respect reduced-motion */
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: 0.001s !important;
+          animation-delay: 0s !important;
+          transition-duration: 0.001s !important;
+          opacity: 1 !important;
+        }
       }
-      .gd-hero__text {
-        padding: 8rem 2rem 5rem;
-      }
-      .gd-hero__image {
-        height: 55vw;
-        min-height: 300px;
-      }
-      .gd-industry-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .gd-calc__inner {
-        grid-template-columns: 1fr;
-        gap: 3.5rem;
-      }
-      .gd-about__grid {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-      }
-      .gd-contact__inner {
-        grid-template-columns: 1fr;
-        gap: 3.5rem;
-      }
-    }
-    @media (max-width: 640px) {
-      .gd-hero__text {
-        padding: 7rem 1.5rem 4rem;
-      }
-      .gd-industry-grid {
-        grid-template-columns: 1fr;
-      }
-      .gd-about__credentials,
-      .gd-about__phil {
-        grid-template-columns: 1fr;
-      }
-      .gd-options {
-        grid-template-columns: 1fr;
-      }
-      .gd-calc__panel {
-        padding: 2rem 1.5rem;
-      }
-    }
-
-  </style>
-</head>
-<body>
-
-  <!-- ====================================================
-       NAVIGATION
-  ==================================================== -->
-  <nav class="nav" id="nav">
-    <div class="nav__container">
-      <a href="/" class="nav__logo">
-        <span class="nav__logo-name">Greytone</span>
-        <span class="nav__logo-studio">Digital</span>
-      </a>
-      <ul class="nav__links">
-        <li><a href="#industries" class="nav__link">Who We Serve</a></li>
-        <li><a href="#about" class="nav__link">About</a></li>
-        <li><a href="#contact" class="nav__link">Contact</a></li>
-      </ul>
-      <a href="https://calendly.com/cbreek-greytonedigital/30min" target="_blank" rel="noopener" class="btn btn--primary btn--sm nav__cta">Book a Call</a>
-      <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
-
-  <div class="nav__mobile" id="mobileNav">
-    <a href="#industries" class="nav__mobile-link">Who We Serve</a>
-    <a href="#about" class="nav__mobile-link">About</a>
-    <a href="#contact" class="nav__mobile-link">Contact</a>
-    <a href="https://calendly.com/cbreek-greytonedigital/30min" target="_blank" rel="noopener" class="btn btn--primary nav__mobile-cta">Book a Call</a>
-  </div>
-
-  <!-- ====================================================
-       HERO
-  ==================================================== -->
-  <section class="gd-hero">
-
-    <div class="gd-hero__text fade-in">
-      <p class="gd-hero__eyebrow">AI-Powered Growth Studio</p>
-      <h1 class="gd-hero__wordmark">Grey<br>tone</h1>
-      <p class="gd-hero__wordmark-sub">Digital</p>
-      <p class="gd-hero__headline">Put your website<br>to work.</p>
-      <p class="gd-hero__sub">We build AI-powered websites and business systems for contractors, realtors, and service businesses — so you capture every lead, follow up automatically, and close more.</p>
-      <div class="gd-hero__ctas">
-        <a href="https://calendly.com/cbreek-greytonedigital/30min" target="_blank" rel="noopener" class="btn btn--gold btn--lg">Book a Strategy Session</a>
-        <a href="#industries" class="btn btn--outline-light btn--lg">Who We Serve</a>
-      </div>
-    </div>
-
-    <div class="gd-hero__image" role="img" aria-label="Modern executive conference room"></div>
-
-  </section>
-
-  <!-- STRIP -->
-  <div class="gd-strip">
-    <p class="label-caps-lg" style="color:rgba(255,255,255,0.28); letter-spacing:0.42em;">
-      Luxury &nbsp;&middot;&nbsp; Movement &nbsp;&middot;&nbsp; Story &nbsp;&middot;&nbsp; Built for Business
-    </p>
-  </div>
-
-  <!-- ====================================================
-       WHO WE SERVE
-  ==================================================== -->
-  <section class="gd-industries" id="industries">
-    <div class="container">
-
-      <div class="section-header fade-in">
-        <div class="section-header__eyebrow">Who We Serve</div>
-        <h2 class="section-header__title">Built for the businesses<br>that build communities.</h2>
-        <p class="section-header__subtitle">We work with established service businesses ready to grow with better systems and a stronger online presence.</p>
-      </div>
-
-      <div class="gd-industry-grid stagger-children">
-
-        <div class="gd-industry-card">
-          <svg class="gd-industry-card__icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="3" y="18" width="30" height="15" stroke="#1a1a1a" stroke-width="1.4"/>
-            <path d="M9 18V11l9-7 9 7v7" stroke="#1a1a1a" stroke-width="1.4"/>
-            <rect x="14" y="23" width="8" height="10" stroke="#1a1a1a" stroke-width="1.4"/>
-          </svg>
-          <div class="gd-industry-card__name">General Contractors</div>
-          <p class="gd-industry-card__desc">A professional web presence, automated follow-up, and a lead system that works while you're on the job site.</p>
-        </div>
-
-        <div class="gd-industry-card">
-          <svg class="gd-industry-card__icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="18" cy="14" r="6" stroke="#1a1a1a" stroke-width="1.4"/>
-            <path d="M6 34c0-6.627 5.373-12 12-12s12 5.373 12 12" stroke="#1a1a1a" stroke-width="1.4"/>
-          </svg>
-          <div class="gd-industry-card__name">Realtors</div>
-          <p class="gd-industry-card__desc">Capture buyer and seller leads 24/7 with automated qualification, instant follow-up, and seamless booking.</p>
-        </div>
-
-        <div class="gd-industry-card">
-          <svg class="gd-industry-card__icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M18 4v4M18 28v4M4 18h4M28 18h4" stroke="#1a1a1a" stroke-width="1.4" stroke-linecap="round"/>
-            <circle cx="18" cy="18" r="6" stroke="#1a1a1a" stroke-width="1.4"/>
-            <circle cx="18" cy="18" r="2" fill="#1a1a1a"/>
-          </svg>
-          <div class="gd-industry-card__name">HVAC &amp; Home Services</div>
-          <p class="gd-industry-card__desc">Never miss a service call again. Automated dispatch, scheduling, and follow-up keeps your calendar full.</p>
-        </div>
-
-        <div class="gd-industry-card">
-          <svg class="gd-industry-card__icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M18 4s-10 8-10 16a10 10 0 0020 0C28 12 18 4 18 4z" stroke="#1a1a1a" stroke-width="1.4"/>
-            <path d="M18 17v8M15 22l3 3 3-3" stroke="#1a1a1a" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <div class="gd-industry-card__name">Beauty &amp; Wellness</div>
-          <p class="gd-industry-card__desc">From salons to med spas — online booking, client retention systems, and the web presence your brand deserves.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- ====================================================
-       MISSED CALL CALCULATOR
-  ==================================================== -->
-  <section class="gd-calc" id="calculator">
-    <div class="container">
-      <div class="gd-calc__inner">
-
-        <div class="fade-in">
-          <span class="gd-calc__eyebrow">The Revenue Problem</span>
-          <h2 class="gd-calc__title">How much are missed calls costing you?</h2>
-          <p class="gd-calc__desc">Most service businesses miss 30–40% of inbound calls. Each missed call is a qualified lead going directly to a competitor. Calculate your real number — then let's fix it.</p>
-          <div class="gd-calc__quote">
-            <p class="gd-calc__quote-text">&ldquo;We don&rsquo;t just build websites. We build the system behind the website — the follow-up, the booking, the automation that turns visitors into clients.&rdquo;</p>
-            <p class="gd-calc__quote-attr">— Chrissy Breek, Founder</p>
-          </div>
-        </div>
-
-        <div class="gd-calc__panel fade-in-right">
-          <div class="gd-calc__field">
-            <label for="calc-calls">Calls received per week</label>
-            <input class="gd-calc__input" type="number" id="calc-calls" placeholder="e.g. 20" min="0">
-          </div>
-          <div class="gd-calc__field">
-            <label for="calc-rate">Missed call rate (%)</label>
-            <input class="gd-calc__input" type="number" id="calc-rate" placeholder="e.g. 30" min="0" max="100">
-          </div>
-          <div class="gd-calc__field">
-            <label for="calc-value">Average job / transaction value ($)</label>
-            <input class="gd-calc__input" type="number" id="calc-value" placeholder="e.g. 2500" min="0">
-          </div>
-          <button class="gd-calc__btn" onclick="gdCalculate()">Calculate My Loss</button>
-          <div class="gd-calc__result" id="gdCalcResult">
-            <div class="gd-calc__result-label">Estimated Annual Revenue Lost</div>
-            <div class="gd-calc__result-number" id="gdCalcNumber">$0</div>
-            <div class="gd-calc__result-sub">Based on your inputs. The real number is often higher.</div>
-            <a href="https://calendly.com/cbreek-greytonedigital/30min" target="_blank" rel="noopener" class="gd-calc__result-link">Let&rsquo;s fix this &rarr;</a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ====================================================
-       ABOUT / FOUNDER
-  ==================================================== -->
-  <section class="gd-about" id="about">
-    <div class="container">
-      <div class="gd-about__grid">
-
-        <div class="gd-about__img fade-in-left">
-          <span class="gd-about__img-placeholder">Chrissy Breek</span>
-        </div>
-
-        <div class="fade-in-right">
-          <div class="section-header__eyebrow" style="display:flex;align-items:center;gap:.8rem;margin-bottom:1.5rem;justify-content:flex-start;">
-            <span style="width:24px;height:1px;background:var(--gold);display:inline-block;"></span>
-            The Founder
-          </div>
-          <h2 class="display-md" style="margin-bottom:1.75rem;">30 years inside luxury retail. Now building the tools she wished she had.</h2>
-          <p style="font-size:.95rem;color:var(--gray);line-height:1.9;font-weight:300;margin-bottom:1.25rem;">Chrissy Breek spent three decades building some of the most recognized luxury retail experiences in the country — from Fifth Avenue to Montage Hotels, from Halston to Intermix. She knows what a high-performing client experience looks like, what it costs to miss one, and exactly what businesses need to compete at the highest level.</p>
-          <p style="font-size:.95rem;color:var(--gray);line-height:1.9;font-weight:300;margin-bottom:2rem;">Greytone Digital exists because those tools are finally available to every business — not just enterprise. AI-powered websites, automated follow-up, and systems built with the same standard Chrissy held every team she led to.</p>
-
-          <div class="gd-about__credentials">
-            <div class="gd-about__cred">
-              <div class="gd-about__cred-num">#5</div>
-              <div class="gd-about__cred-label">Bloomingdale&rsquo;s nationally</div>
-            </div>
-            <div class="gd-about__cred">
-              <div class="gd-about__cred-num">99%</div>
-              <div class="gd-about__cred-label">Team retention rate</div>
-            </div>
-            <div class="gd-about__cred" style="background:var(--charcoal);">
-              <div class="gd-about__cred-num" style="color:#fff;">2023</div>
-              <div class="gd-about__cred-label" style="color:rgba(255,255,255,0.45);">Manager of the Year</div>
-            </div>
-            <div class="gd-about__cred">
-              <div class="gd-about__cred-num">30+</div>
-              <div class="gd-about__cred-label">Years luxury retail leadership</div>
-            </div>
-          </div>
-
-          <div class="gd-about__phil">
-            <div class="gd-about__phil-item">
-              <div class="gd-about__phil-title">Minimal</div>
-              <p class="gd-about__phil-desc">Nothing extraneous. Every element serves a purpose.</p>
-            </div>
-            <div class="gd-about__phil-item gd-about__phil-item--dark">
-              <div class="gd-about__phil-title gd-about__phil-title--light">Expressive</div>
-              <p class="gd-about__phil-desc gd-about__phil-desc--light">Your brand, your story — built with intention.</p>
-            </div>
-            <div class="gd-about__phil-item">
-              <div class="gd-about__phil-title">Timeless</div>
-              <p class="gd-about__phil-desc">Systems built to grow with you, not against you.</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ====================================================
-       CONTACT
-  ==================================================== -->
-  <section class="gd-contact" id="contact">
-    <div class="container">
-      <div class="gd-contact__inner">
-
-        <div class="fade-in">
-          <p class="gd-contact__label">Let&rsquo;s Begin</p>
-          <h2 class="gd-contact__title">Start a conversation.</h2>
-          <p class="gd-contact__note">30 minutes. No pitch deck.<br>Just a clear look at what's possible for your business.</p>
-        </div>
-
-        <div class="fade-in-right">
-          <span class="gd-options-label">What are you looking to do?</span>
-          <p class="gd-options-hint">Select all that apply.</p>
-
-          <div class="gd-options" id="gdOptions">
-            <div class="gd-option" onclick="gdToggle(this)">
-              <div class="gd-option__check"></div>
-              <span class="gd-option__text">Build an AI-powered business system</span>
-            </div>
-            <div class="gd-option" onclick="gdToggle(this)">
-              <div class="gd-option__check"></div>
-              <span class="gd-option__text">Modernize my website</span>
-            </div>
-            <div class="gd-option" onclick="gdToggle(this)">
-              <div class="gd-option__check"></div>
-              <span class="gd-option__text">Capture more qualified leads</span>
-            </div>
-            <div class="gd-option" onclick="gdToggle(this)">
-              <div class="gd-option__check"></div>
-              <span class="gd-option__text">Automate follow-up and scheduling</span>
-            </div>
-            <div class="gd-option" onclick="gdToggle(this)">
-              <div class="gd-option__check"></div>
-              <span class="gd-option__text">Rebrand my business</span>
-            </div>
-            <div class="gd-option" onclick="gdToggle(this)">
-              <div class="gd-option__check"></div>
-              <span class="gd-option__text">I&rsquo;m not sure — I&rsquo;d like your recommendations</span>
-            </div>
-          </div>
-
-          <a href="https://calendly.com/cbreek-greytonedigital/30min" target="_blank" rel="noopener" class="gd-contact__cta">
-            Book a Strategy Session
-          </a>
-          <p class="gd-contact__email-line">
-            <a href="mailto:hello@greytonedigital.com">hello@greytonedigital.com</a>
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ====================================================
-       FOOTER CTA
-  ==================================================== -->
-  <section class="gd-cta">
-    <div class="container--narrow">
-      <span class="gd-cta__eyebrow">Ready When You Are</span>
-      <h2 class="gd-cta__title">Let&rsquo;s put your website to work.</h2>
-      <p class="gd-cta__sub">30 minutes. No pitch deck. Just a clear look at what&rsquo;s possible.</p>
-      <a href="https://calendly.com/cbreek-greytonedigital/30min" target="_blank" rel="noopener" class="btn btn--gold btn--lg">Book a Discovery Call</a>
-    </div>
-  </section>
-
-  <!-- ====================================================
-       FOOTER
-  ==================================================== -->
-  <footer class="footer">
-    <div class="footer__main">
-      <div class="footer__brand">
-        <div class="footer__brand-name">Greytone</div>
-        <div class="footer__brand-studio">Digital</div>
-        <p class="footer__brand-desc">AI-powered websites and business systems for service businesses who value craftsmanship, story, and growth. Based in Orange County, California.</p>
-      </div>
-      <div>
-        <div class="footer__col-title">Navigate</div>
-        <a href="#industries" class="footer__nav-link">Who We Serve</a>
-        <a href="#about" class="footer__nav-link">About</a>
-        <a href="#contact" class="footer__nav-link">Contact</a>
-      </div>
-      <div>
-        <div class="footer__col-title">Services</div>
-        <a href="#contact" class="footer__nav-link">AI Business Systems</a>
-        <a href="#contact" class="footer__nav-link">Website Design</a>
-        <a href="#contact" class="footer__nav-link">Lead Capture</a>
-        <a href="#contact" class="footer__nav-link">Automation</a>
-        <a href="#contact" class="footer__nav-link">Rebranding</a>
-      </div>
-      <div>
-        <div class="footer__col-title">Contact</div>
-        <div class="footer__contact-item"><a href="mailto:hello@greytonedigital.com">hello@greytonedigital.com</a></div>
-        <div class="footer__contact-item">Orange County, California</div>
-        <div class="footer__contact-item" style="margin-top:1rem;">
-          <a href="https://calendly.com/cbreek-greytonedigital/30min" target="_blank" rel="noopener" style="color:var(--gold);">Book a Strategy Session &rarr;</a>
-        </div>
-      </div>
-    </div>
-    <div class="footer__bar">
-      <span class="footer__copyright">&copy; 2025 Greytone Digital</span>
-      <span class="footer__bar-tagline">Luxury &nbsp;&middot;&nbsp; Movement &nbsp;&middot;&nbsp; Story &nbsp;&middot;&nbsp; Built for Business</span>
-      <span class="footer__copyright">All rights reserved</span>
-    </div>
-  </footer>
-
-  <script src="js/main.js"></script>
-  <script>
-    // === MISSED CALL CALCULATOR ===
-    function gdCalculate() {
-      var calls = parseFloat(document.getElementById('calc-calls').value) || 0;
-      var rate  = parseFloat(document.getElementById('calc-rate').value)  || 0;
-      var value = parseFloat(document.getElementById('calc-value').value) || 0;
-      var annual = calls * (rate / 100) * value * 52;
-      var el = document.getElementById('gdCalcResult');
-      document.getElementById('gdCalcNumber').textContent =
-        '$' + Math.round(annual).toLocaleString('en-US');
-      el.classList.add('active');
-      el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-    document.querySelectorAll('.gd-calc__input').forEach(function(inp) {
-      inp.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') gdCalculate();
-      });
-    });
-
-    // === CONTACT OPTION CARDS ===
-    function gdToggle(el) {
-      el.classList.toggle('selected');
-    }
-  </script>
-
-</body>
+    </style>
+    <script type="module" crossorigin src="/assets/index-lwnlf2f4.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-c20otfg7.css">
+  </head>
+  <body>
+    <!-- Hidden form for Netlify Forms detection -->
+    <form name="discovery-call" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="company" />
+      <input type="tel" name="phone" />
+      <input type="url" name="website" />
+      <input type="text" name="goal" />
+    </form>
+    <div id="root"></div>
+    <script>
+      // Hide Netlify badge injected after page load
+      const hideBadge = () => {
+        const selectors = [
+          '[data-netlify-badge]','[class*="netlify"][class*="badge"]',
+          'a[href*="app.netlify.com"]','a[href*="netlify.com/signup"]',
+          'iframe[src*="netlify"]'
+        ];
+        selectors.forEach(s => document.querySelectorAll(s).forEach(el => el.style.display = 'none'));
+      };
+      hideBadge();
+      new MutationObserver(hideBadge).observe(document.body, { childList: true, subtree: true });
+    </script>
+  </body>
 </html>
