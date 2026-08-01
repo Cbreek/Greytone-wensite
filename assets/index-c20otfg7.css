@@ -108,3 +108,4 @@ section.relative.min-h-screen.overflow-hidden::after {
 #calculator button:hover {
   background: #dedad4 !important;
 }
+input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus,input:-webkit-autofill:active{-webkit-box-shadow:0 0 0 1000px #161210 inset!important;-webkit-text-fill-color:#e8e4df!important;caret-color:#e8e4df;}
