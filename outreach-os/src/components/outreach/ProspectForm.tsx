@@ -84,7 +84,7 @@ export function ProspectForm({ onGenerate }: Props) {
 
       {/* To email */}
       <div>
-        <label className={labelClass}>Prospect Email</label>
+        <label className={labelClass}>Recipient Email</label>
         <input
           type="email"
           value={data.toEmail}

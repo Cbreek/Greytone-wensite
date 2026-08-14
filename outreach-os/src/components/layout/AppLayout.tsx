@@ -20,9 +20,9 @@ export function AppLayout({ children }: Props) {
           Sign out
         </button>
       </header>
-      <div className="bg-greytone-50 border-b border-greytone-200 px-6 py-3">
-        <p className="font-serif text-greytone-800 text-base">Personalized outreach, ready in a few clicks.</p>
-        <p className="font-sans text-xs text-greytone-500 mt-0.5 leading-relaxed">
+      <div className="bg-greytone-50 border-b border-greytone-200 px-6 py-5">
+        <p className="font-serif text-greytone-800 text-lg">Personalized outreach, ready in a few clicks.</p>
+        <p className="font-sans text-sm text-greytone-500 mt-2 leading-relaxed">
           Choose the outreach type, enter what you know about the recipient, and Outreach OS creates a polished, personalized email. Review it, make any edits, and send.
         </p>
       </div>

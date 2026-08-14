@@ -49,7 +49,7 @@ export default function App() {
       <div className="flex flex-col lg:flex-row gap-6 h-full">
         <div className="w-full lg:w-[380px] lg:flex-shrink-0 bg-greytone-50 border border-greytone-200 rounded-lg p-6 flex flex-col">
           <h2 className="font-serif text-greytone-800 text-lg mb-1">New Outreach</h2>
-          <p className="text-xs text-greytone-400 font-sans tracking-wide mb-5">Fill in the prospect details below.</p>
+          <p className="text-xs text-greytone-400 font-sans tracking-wide mb-5">Fill in the recipient details below.</p>
           <div className="flex-1"><ProspectForm onGenerate={setGeneratedData} /></div>
         </div>
         <div className="flex-1 bg-greytone-50 border border-greytone-200 rounded-lg p-6 flex flex-col">
