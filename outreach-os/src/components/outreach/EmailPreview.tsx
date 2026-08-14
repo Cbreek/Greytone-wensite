@@ -4,9 +4,9 @@ import { getTemplate } from '../../templates'
 import { createGmailDraft, openGmailDraft } from '../../lib/gmail'
 import { generateSubjectLines } from '../../lib/ai'
 
-interface Props { data: ProspectData | null }
+interface Props { data: ProspectData | null; isAuthenticated: boolean }
 
-export function EmailPreview({ data }: Props) {
+export function EmailPreview({ data, isAuthenticated }: Props) {
   const [draftLoading, setDraftLoading] = useState(false)
   const [draftError, setDraftError] = useState('')
   const [copied, setCopied] = useState(false)
@@ -118,10 +118,26 @@ export function EmailPreview({ data }: Props) {
               className="px-4 py-2 border border-greytone-300 rounded text-xs tracking-wider uppercase text-greytone-600 font-sans hover:bg-greytone-100 transition-colors">
               {copied ? '✓ Copied' : 'Copy HTML'}
             </button>
-            <button onClick={handleGmailDraft} disabled={draftLoading}
-              className="px-4 py-2 bg-greytone-800 text-greytone-50 rounded text-xs tracking-wider uppercase font-sans hover:bg-greytone-700 transition-colors disabled:opacity-50">
-              {draftLoading ? 'Opening…' : '→ Open in Gmail'}
-            </button>
+            {isAuthenticated ? (
+              <button onClick={handleGmailDraft} disabled={draftLoading}
+                className="px-4 py-2 bg-greytone-800 text-greytone-50 rounded text-xs tracking-wider uppercase font-sans hover:bg-greytone-700 transition-colors disabled:opacity-50">
+                {draftLoading ? 'Opening…' : '→ Open in Gmail'}
+              </button>
+            ) : (
+              <div className="flex flex-col items-end gap-1.5">
+                <button disabled
+                  className="px-4 py-2 bg-greytone-200 text-greytone-400 rounded text-xs tracking-wider uppercase font-sans cursor-not-allowed">
+                  → Send
+                </button>
+                <p className="text-xs text-greytone-400 font-sans text-right leading-snug">
+                  Sending requires a paid account.{' '}
+                  <a href="https://greytonedigital.com/#contact" target="_blank" rel="noopener noreferrer"
+                    className="underline hover:text-greytone-600 transition-colors">
+                    Contact Greytone
+                  </a>
+                </p>
+              </div>
+            )}
           </div>
         </div>
         {draftError && <p className="text-xs text-red-500 mt-2 font-sans">{draftError}</p>}
