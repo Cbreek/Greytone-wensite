@@ -20,6 +20,7 @@ const BLANK: ProspectData = {
   websiteUrl: '',
   referrerName: '',
   observation: '',
+  specificIdea: '',
   templateId: 'cold',
   toEmail: '',
 }
@@ -178,7 +179,7 @@ export function ProspectForm({ onGenerate }: Props) {
       )}
 
       {/* Observation */}
-      <div className="flex-1">
+      <div>
         <div className="flex items-center justify-between mb-1.5">
           <label className={labelClass + ' mb-0'}>Personalized Observation</label>
           <button
@@ -194,11 +195,25 @@ export function ProspectForm({ onGenerate }: Props) {
           value={data.observation}
           onChange={e => set('observation', e.target.value)}
           placeholder="What did you notice about their business or website? Be specific."
-          rows={5}
+          rows={4}
           className={inputClass + ' resize-none leading-relaxed'}
         />
         {aiError && <p className="text-xs text-red-500 mt-1 font-sans">{aiError}</p>}
       </div>
+
+      {/* Specific idea — only shown for warm template */}
+      {data.templateId === 'warm' && (
+        <div>
+          <label className={labelClass}>Specific Opportunity or Idea</label>
+          <textarea
+            value={data.specificIdea ?? ''}
+            onChange={e => set('specificIdea', e.target.value)}
+            placeholder="What specific bottleneck, opportunity, or idea came to mind for their business? (e.g. 'how much time your team probably spends manually following up with new leads')"
+            rows={3}
+            className={inputClass + ' resize-none leading-relaxed'}
+          />
+        </div>
+      )}
 
       {/* Actions */}
       <div className="flex gap-3 pt-2">

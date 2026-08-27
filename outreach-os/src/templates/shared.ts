@@ -22,21 +22,33 @@ export const SENDER = {
   ogImage: 'https://www.greytonedigital.com/og-preview.png',
 }
 
+const DEFAULT_CLOSING = "I'd be happy to share a few ideas I already have for your business. Let's chat — I look forward to connecting."
+
 export function buildEmailHtml(params: {
   greeting: string
   paragraphs: string[]
   showBullets: boolean
+  customBullets?: string[]
+  bulletsIntro?: string
+  paragraphsAfterBullets?: string[]
   closingParagraph?: string
 }): string {
-  const { greeting, paragraphs, showBullets, closingParagraph } = params
+  const { greeting, paragraphs, showBullets, customBullets, bulletsIntro, paragraphsAfterBullets, closingParagraph } = params
+  const bulletList = customBullets ?? BULLETS
+  const bulletIntroText = bulletsIntro ?? 'A few ways I can help:'
+  const closingText = closingParagraph ?? DEFAULT_CLOSING
 
-  const bulletItems = BULLETS.map(
+  const bulletItems = bulletList.map(
     b => `<tr><td style="padding:4px 0;font-family:Georgia,'Times New Roman',serif;font-size:16px;color:#4a443c;line-height:1.65;">
             <span style="color:#6e6050;margin-right:10px;">✓</span>${b}
           </td></tr>`
   ).join('\n')
 
   const paraHtml = paragraphs
+    .map(p => `<p style="margin:0 0 20px;font-family:Georgia,'Times New Roman',serif;font-size:16px;color:#4a443c;line-height:1.75;">${p}</p>`)
+    .join('\n')
+
+  const afterBulletsHtml = (paragraphsAfterBullets ?? [])
     .map(p => `<p style="margin:0 0 20px;font-family:Georgia,'Times New Roman',serif;font-size:16px;color:#4a443c;line-height:1.75;">${p}</p>`)
     .join('\n')
 
@@ -72,14 +84,14 @@ export function buildEmailHtml(params: {
             ${paraHtml}
 
             ${showBullets ? `
-            <p style="margin:0 0 16px;font-family:Georgia,'Times New Roman',serif;font-size:16px;color:#4a443c;line-height:1.75;">A few ways I can help:</p>
+            <p style="margin:0 0 16px;font-family:Georgia,'Times New Roman',serif;font-size:16px;color:#4a443c;line-height:1.75;">${bulletIntroText}</p>
             <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:28px;">
               ${bulletItems}
             </table>` : ''}
 
-            ${closingParagraph ? `<p style="margin:0 0 32px;font-family:Georgia,'Times New Roman',serif;font-size:16px;color:#4a443c;line-height:1.75;">${closingParagraph}</p>` : ''}
+            ${afterBulletsHtml}
 
-            <p style="margin:0 0 36px;font-family:Georgia,'Times New Roman',serif;font-size:16px;color:#4a443c;line-height:1.75;">I'd be happy to share a few ideas I already have for your business. Let's chat — I look forward to connecting.</p>
+            <p style="margin:0 0 36px;font-family:Georgia,'Times New Roman',serif;font-size:16px;color:#4a443c;line-height:1.75;">${closingText}</p>
 
             <!-- CTA -->
             <table cellpadding="0" cellspacing="0" border="0" style="margin-bottom:40px;">

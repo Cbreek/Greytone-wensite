@@ -28,6 +28,7 @@ export interface ProspectData {
   websiteUrl: string
   referrerName: string
   observation: string
+  specificIdea?: string
   templateId: TemplateId
   toEmail: string
 }
