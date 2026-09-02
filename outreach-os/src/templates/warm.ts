@@ -6,9 +6,9 @@ const WARM_BULLETS = [
   'Refresh and modernize your existing website without starting over.',
   'Improve how your business shows up on Google and AI search.',
   'Connect your website to social media, customer reviews, Google, and the everyday tools that make it easier for customers to find and connect with you.',
-  'Add user-friendly AI tools that can answer questions, capture leads, and handle specific jobs for your business 24/7.',
+  'Add simple AI tools that can answer questions, capture leads, schedule appointments, and handle specific jobs for your business 24/7.',
   'Rebuild or completely rebrand if your business has outgrown its current website.',
-  'Automate repetitive work that costs you and your team time every week.',
+  'Automate repetitive tasks that cost you and your team time every week.',
 ]
 
 export const warmTemplate: Template = {
@@ -35,7 +35,7 @@ export const warmTemplate: Template = {
       customBullets: WARM_BULLETS,
       bulletsIntro: 'Depending on the business, that can mean:',
       paragraphsAfterBullets: [
-        `And it can go beyond the website. Think about the work you'd hand to another employee or executive assistant if one showed up tomorrow — follow-ups, organizing, tracking, research, prep work. We can now build AI-powered business systems to handle many of those jobs, customized around how your business actually works.`,
+        `And it can go beyond the website. Think about the work you'd hand to an executive assistant if one showed up tomorrow — follow-ups, organizing, tracking, research, prep work, and scheduling. We can now build AI-powered business systems to handle many of those jobs, built around exactly where your business is losing time and opportunity.`,
         `When I thought about ${biz}, I immediately thought about ${idea}.`,
       ],
       closingParagraph: `I'd love to show you what I mean and share a few ideas specific to your business. Can we find 15 minutes to connect?`,
