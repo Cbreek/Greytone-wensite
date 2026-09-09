@@ -23,6 +23,9 @@ const BLANK: ProspectData = {
   specificIdea: '',
   templateId: 'cold',
   toEmail: '',
+  prototypeUrl: '',
+  screenshotUrl: '',
+  comparisonRows: '',
 }
 
 interface Props {
@@ -201,18 +204,57 @@ export function ProspectForm({ onGenerate }: Props) {
         {aiError && <p className="text-xs text-red-500 mt-1 font-sans">{aiError}</p>}
       </div>
 
-      {/* Specific idea — only shown for warm template */}
-      {data.templateId === 'warm' && (
+      {/* Specific idea — only shown for warm templates */}
+      {(data.templateId === 'warm' || data.templateId === 'warm2') && (
         <div>
           <label className={labelClass}>Specific Opportunity or Idea</label>
           <textarea
             value={data.specificIdea ?? ''}
             onChange={e => set('specificIdea', e.target.value)}
-            placeholder="What specific bottleneck, opportunity, or idea came to mind for their business? (e.g. 'how much time your team probably spends manually following up with new leads')"
+            placeholder={data.templateId === 'warm2'
+              ? "The 'what started as a refresh turned into something bigger' hook (e.g. 'a full booking and follow-up system, not just a new coat of paint')"
+              : "What specific bottleneck, opportunity, or idea came to mind for their business? (e.g. 'how much time your team probably spends manually following up with new leads')"}
             rows={3}
             className={inputClass + ' resize-none leading-relaxed'}
           />
         </div>
+      )}
+
+      {/* Prototype fields — only shown for warm2 (prototype ready) template */}
+      {data.templateId === 'warm2' && (
+        <>
+          <div>
+            <label className={labelClass}>Prototype Link <span className="normal-case tracking-normal text-greytone-400">(temporary link)</span></label>
+            <input
+              type="url"
+              value={data.prototypeUrl ?? ''}
+              onChange={e => set('prototypeUrl', e.target.value)}
+              placeholder="https://your-prototype-link.netlify.app"
+              className={inputClass}
+            />
+          </div>
+          <div>
+            <label className={labelClass}>Screenshot Image URL <span className="normal-case tracking-normal text-greytone-400">(optional)</span></label>
+            <input
+              type="url"
+              value={data.screenshotUrl ?? ''}
+              onChange={e => set('screenshotUrl', e.target.value)}
+              placeholder="https://.../homepage-screenshot.png"
+              className={inputClass}
+            />
+          </div>
+          <div>
+            <label className={labelClass}>Current Site vs. Prototype <span className="normal-case tracking-normal text-greytone-400">(optional — one per line: Current | Prototype)</span></label>
+            <textarea
+              value={data.comparisonRows ?? ''}
+              onChange={e => set('comparisonRows', e.target.value)}
+              placeholder={'2 basic pages | 11-page branded experience\nNo online shop | Dedicated shop with ordering\nGeneric pop-up chat | Built-in concierge'}
+              rows={5}
+              className={inputClass + ' resize-none leading-relaxed font-mono text-xs'}
+            />
+            <p className="text-xs text-greytone-400 mt-1 font-sans">Leave blank to use the default comparison table.</p>
+          </div>
+        </>
       )}
 
       {/* Actions */}

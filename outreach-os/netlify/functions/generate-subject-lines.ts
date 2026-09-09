@@ -21,9 +21,11 @@ const handler: Handler = async (event) => {
 
   const templateTone = templateId === 'warm'
     ? 'warm/known lead (casual, personal, like emailing someone you already know)'
-    : templateId === 'referral'
-      ? 'referral introduction (credible, grounded in the referral)'
-      : 'cold outreach (professional, observational, not salesy)'
+    : templateId === 'warm2'
+      ? 'warm/known lead with a prototype already built (personal, confident, proof-based)'
+      : templateId === 'referral'
+        ? 'referral introduction (credible, grounded in the referral)'
+        : 'cold outreach (professional, observational, not salesy)'
 
   const prompt = `You are writing email subject lines for Chrissy Breek, founder of Greytone Digital, an AI-powered website and business systems agency, reaching out to a prospect.
 

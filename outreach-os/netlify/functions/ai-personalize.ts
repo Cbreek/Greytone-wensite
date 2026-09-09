@@ -29,7 +29,7 @@ Prospect details:
 - Industry: ${industry || 'unknown'}
 - City/Area: ${cityArea || 'unknown'}
 - Website: ${websiteUrl || 'not provided'}
-- Template type: ${templateId === 'warm' ? 'warm/known lead (casual, personal)' : templateId === 'referral' ? 'referral introduction (credible, specific)' : 'cold outreach (professional, observational)'}
+- Template type: ${templateId === 'warm' ? 'warm/known lead (casual, personal)' : templateId === 'warm2' ? 'warm/known lead with a prototype already built (personal, confident, proof-based — refers back to a prior conversation)' : templateId === 'referral' ? 'referral introduction (credible, specific)' : 'cold outreach (professional, observational)'}
 
 Write ONLY the observation paragraph — no greeting, no sign-off, no extra commentary. 2-3 sentences max. Start directly with the observation.`
 

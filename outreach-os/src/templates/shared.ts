@@ -32,11 +32,26 @@ export function buildEmailHtml(params: {
   bulletsIntro?: string
   paragraphsAfterBullets?: string[]
   closingParagraph?: string
+  heroImageUrl?: string
+  heroImageAlt?: string
+  primaryCtaUrl?: string
+  primaryCtaLabel?: string
+  midParagraphs?: string[]
+  comparisonRows?: { current: string; prototype: string }[]
+  comparisonHeaders?: { current: string; prototype: string }
+  ctaUrl?: string
+  ctaLabel?: string
 }): string {
-  const { greeting, paragraphs, showBullets, customBullets, bulletsIntro, paragraphsAfterBullets, closingParagraph } = params
+  const {
+    greeting, paragraphs, showBullets, customBullets, bulletsIntro, paragraphsAfterBullets, closingParagraph,
+    heroImageUrl, heroImageAlt, primaryCtaUrl, primaryCtaLabel, midParagraphs, comparisonRows, comparisonHeaders,
+    ctaUrl, ctaLabel,
+  } = params
   const bulletList = customBullets ?? BULLETS
   const bulletIntroText = bulletsIntro ?? 'A few ways I can help:'
   const closingText = closingParagraph ?? DEFAULT_CLOSING
+  const finalCtaUrl = ctaUrl ?? SENDER.ctaUrl
+  const finalCtaLabel = ctaLabel ?? 'See How It Works'
 
   const bulletItems = bulletList.map(
     b => `<tr><td style="padding:4px 0;font-family:Georgia,'Times New Roman',serif;font-size:16px;color:#4a443c;line-height:1.65;">
@@ -48,9 +63,44 @@ export function buildEmailHtml(params: {
     .map(p => `<p style="margin:0 0 20px;font-family:Georgia,'Times New Roman',serif;font-size:16px;color:#4a443c;line-height:1.75;">${p}</p>`)
     .join('\n')
 
+  const midParagraphsHtml = (midParagraphs ?? [])
+    .map(p => `<p style="margin:0 0 20px;font-family:Georgia,'Times New Roman',serif;font-size:16px;color:#4a443c;line-height:1.75;">${p}</p>`)
+    .join('\n')
+
   const afterBulletsHtml = (paragraphsAfterBullets ?? [])
     .map(p => `<p style="margin:0 0 20px;font-family:Georgia,'Times New Roman',serif;font-size:16px;color:#4a443c;line-height:1.75;">${p}</p>`)
     .join('\n')
+
+  const heroImageHtml = heroImageUrl ? `
+            <div style="margin-bottom:28px;">
+              <img src="${heroImageUrl}" alt="${heroImageAlt ?? ''}" width="504"
+                   style="width:100%;max-width:504px;height:auto;display:block;border-radius:4px;border:1px solid rgba(110,96,80,0.2);" />
+            </div>` : ''
+
+  const primaryCtaHtml = primaryCtaUrl ? `
+            <table cellpadding="0" cellspacing="0" border="0" style="margin-bottom:28px;">
+              <tr>
+                <td style="border:1px solid rgba(110,96,80,0.4);border-radius:3px;">
+                  <a href="${primaryCtaUrl}" target="_blank"
+                     style="display:inline-block;padding:13px 32px;font-family:Georgia,serif;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:#38322c;text-decoration:none;white-space:nowrap;">
+                    ${primaryCtaLabel ?? 'View the Prototype'}
+                  </a>
+                </td>
+              </tr>
+            </table>` : ''
+
+  const comparisonRowsHtml = comparisonRows && comparisonRows.length > 0 ? `
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:28px;border:1px solid rgba(110,96,80,0.25);border-radius:4px;overflow:hidden;">
+              <tr>
+                <td width="50%" style="padding:10px 14px;background:#ddd8d0;font-family:Georgia,serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#4a443c;border-bottom:1px solid rgba(110,96,80,0.2);">${comparisonHeaders?.current ?? 'Current Site'}</td>
+                <td width="50%" style="padding:10px 14px;background:#ddd8d0;font-family:Georgia,serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#4a443c;border-bottom:1px solid rgba(110,96,80,0.2);border-left:1px solid rgba(110,96,80,0.2);">${comparisonHeaders?.prototype ?? 'Prototype'}</td>
+              </tr>
+              ${comparisonRows.map((row, i) => `
+              <tr>
+                <td style="padding:10px 14px;background:#f5f0e8;font-family:Georgia,'Times New Roman',serif;font-size:14px;color:#4a443c;line-height:1.5;${i < comparisonRows.length - 1 ? 'border-bottom:1px solid rgba(110,96,80,0.12);' : ''}">${row.current}</td>
+                <td style="padding:10px 14px;background:#f5f0e8;font-family:Georgia,'Times New Roman',serif;font-size:14px;color:#4a443c;line-height:1.5;border-left:1px solid rgba(110,96,80,0.12);${i < comparisonRows.length - 1 ? 'border-bottom:1px solid rgba(110,96,80,0.12);' : ''}">${row.prototype}</td>
+              </tr>`).join('\n')}
+            </table>` : ''
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -83,6 +133,14 @@ export function buildEmailHtml(params: {
 
             ${paraHtml}
 
+            ${heroImageHtml}
+
+            ${primaryCtaHtml}
+
+            ${midParagraphsHtml}
+
+            ${comparisonRowsHtml}
+
             ${showBullets ? `
             <p style="margin:0 0 16px;font-family:Georgia,'Times New Roman',serif;font-size:16px;color:#4a443c;line-height:1.75;">${bulletIntroText}</p>
             <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:28px;">
@@ -97,9 +155,9 @@ export function buildEmailHtml(params: {
             <table cellpadding="0" cellspacing="0" border="0" style="margin-bottom:40px;">
               <tr>
                 <td style="border:1px solid rgba(110,96,80,0.4);border-radius:3px;">
-                  <a href="${SENDER.ctaUrl}" target="_blank"
+                  <a href="${finalCtaUrl}" target="_blank"
                      style="display:inline-block;padding:13px 32px;font-family:Georgia,serif;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:#38322c;text-decoration:none;white-space:nowrap;">
-                    See How It Works
+                    ${finalCtaLabel}
                   </a>
                 </td>
               </tr>

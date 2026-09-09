@@ -1,4 +1,4 @@
-export type TemplateId = 'warm' | 'cold' | 'referral'
+export type TemplateId = 'warm' | 'warm2' | 'cold' | 'referral'
 
 export const INDUSTRIES = [
   'Real Estate',
@@ -31,6 +31,9 @@ export interface ProspectData {
   specificIdea?: string
   templateId: TemplateId
   toEmail: string
+  prototypeUrl?: string
+  screenshotUrl?: string
+  comparisonRows?: string
 }
 
 export interface GeneratedEmail {
