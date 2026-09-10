@@ -3,6 +3,7 @@ import type { Session } from '@supabase/supabase-js'
 import { supabase } from './lib/supabase'
 import { initGmail } from './lib/gmail'
 import { AppLayout } from './components/layout/AppLayout'
+import { LoginPage } from './components/auth/LoginPage'
 import { ProspectForm } from './components/outreach/ProspectForm'
 import { EmailPreview } from './components/outreach/EmailPreview'
 import type { ProspectData } from './types'
@@ -42,6 +43,10 @@ export default function App() {
   }
 
   const isAuthenticated = !!session
+
+  if (!isAuthenticated) {
+    return <LoginPage />
+  }
 
   return (
     <AppLayout isAuthenticated={isAuthenticated}>
