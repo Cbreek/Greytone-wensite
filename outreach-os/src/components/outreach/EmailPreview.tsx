@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import type { ProspectData } from '../../types'
 import { getTemplate } from '../../templates'
-import { createGmailDraft, openGmailDraft } from '../../lib/gmail'
+import { createGmailDraft, openGmailDraft, openPendingGmailTab, draftUrl } from '../../lib/gmail'
 import { generateSubjectLines } from '../../lib/ai'
 
 interface Props { data: ProspectData | null; isAuthenticated: boolean }
@@ -9,6 +9,7 @@ interface Props { data: ProspectData | null; isAuthenticated: boolean }
 export function EmailPreview({ data, isAuthenticated }: Props) {
   const [draftLoading, setDraftLoading] = useState(false)
   const [draftError, setDraftError] = useState('')
+  const [manualDraftUrl, setManualDraftUrl] = useState('')
   const [copied, setCopied] = useState(false)
   const [subject, setSubject] = useState('')
   const [subjectOptions, setSubjectOptions] = useState<string[] | null>(null)
@@ -55,11 +56,20 @@ export function EmailPreview({ data, isAuthenticated }: Props) {
 
   async function handleGmailDraft() {
     setDraftError('')
+    setManualDraftUrl('')
     setDraftLoading(true)
+    // Open the tab synchronously, before any awaited work, so the browser
+    // still treats it as caused by this click rather than blocking it.
+    const pendingTab = openPendingGmailTab()
     try {
       const draftId = await createGmailDraft({ to: data!.toEmail, subject, htmlBody: html })
-      openGmailDraft(draftId)
+      openGmailDraft(draftId, pendingTab)
+      if (!pendingTab || pendingTab.closed) {
+        // Even the synchronous open was blocked — fall back to a link the user can click.
+        setManualDraftUrl(draftUrl(draftId))
+      }
     } catch (e: any) {
+      pendingTab?.close()
       setDraftError(e.message || 'Failed to create draft')
     } finally {
       setDraftLoading(false)
@@ -141,6 +151,15 @@ export function EmailPreview({ data, isAuthenticated }: Props) {
           </div>
         </div>
         {draftError && <p className="text-xs text-red-500 mt-2 font-sans">{draftError}</p>}
+        {manualDraftUrl && (
+          <p className="text-xs text-greytone-500 font-sans mt-2">
+            Your browser blocked the pop-up.{' '}
+            <a href={manualDraftUrl} target="_blank" rel="noopener noreferrer"
+              className="underline hover:text-greytone-700 transition-colors">
+              Click here to open the draft
+            </a>.
+          </p>
+        )}
       </div>
       <div className="flex-1 border border-greytone-200 rounded-lg overflow-hidden bg-white min-h-[500px]">
         <iframe srcDoc={html} title="Email Preview" className="w-full h-full min-h-[500px]" sandbox="allow-same-origin" />

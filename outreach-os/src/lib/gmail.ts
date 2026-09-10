@@ -90,10 +90,22 @@ export async function createGmailDraft(params: {
   return draft.id
 }
 
-export function openGmailDraft(draftId: string) {
-  window.open(
-    `https://mail.google.com/mail/#drafts/${draftId}`,
-    '_blank',
-    'noopener'
-  )
+export function draftUrl(draftId: string): string {
+  return `https://mail.google.com/mail/#drafts/${draftId}`
+}
+
+// Open a blank tab synchronously, inside the click handler, before any
+// awaited work — browsers only allow window.open() without treating it
+// as a blocked pop-up when it happens immediately in response to a click.
+export function openPendingGmailTab(): Window | null {
+  return window.open('about:blank', '_blank')
+}
+
+export function openGmailDraft(draftId: string, pendingTab?: Window | null) {
+  const url = draftUrl(draftId)
+  if (pendingTab && !pendingTab.closed) {
+    pendingTab.location.href = url
+  } else {
+    window.open(url, '_blank', 'noopener')
+  }
 }
