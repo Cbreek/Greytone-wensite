@@ -1,4 +1,19 @@
+# Greytone Digital: robots.txt
+#
+# Search engines and AI search / answer services are welcome:
+# Googlebot (Google Search, AI Overviews, AI Mode), Bingbot (Bing, Copilot),
+# OAI-SearchBot and ChatGPT-User (ChatGPT search), Claude-SearchBot and
+# Claude-User (Claude), PerplexityBot and Perplexity-User (Perplexity), Applebot.
 User-agent: *
 Allow: /
 Disallow: /founder-signature.png
+
+# AI model-training crawlers are not permitted. Blocking these does not
+# affect appearing in ChatGPT, Claude, Perplexity, Google or Bing search.
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: CCBot
+User-agent: Applebot-Extended
+Disallow: /
+
 Sitemap: https://greytonedigital.com/sitemap.xml
