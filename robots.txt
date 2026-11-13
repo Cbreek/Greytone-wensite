@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
+Disallow: /founder-signature.png
 Sitemap: https://greytonedigital.com/sitemap.xml

@@ -16,11 +16,17 @@ was re-applied on 2026-11-13. Do not undo it again.
   "Founder, Greytone Digital".
 - The founder photo (`photo.jpg`) may stay, with alt text "Founder, Greytone
   Digital" and no name.
+- The About section is signed with `founder-signature.png`: the founder's full
+  name drawn as a signature IMAGE (owner's decision, 2026-11-13). This is the
+  ONLY place the name may appear, and only as pixels. Keep its file name and
+  alt text ("Founder's signature") neutral, keep
+  `Disallow: /founder-signature.png` in `robots.txt` so search engines never
+  fetch it, and never replace it with typed text, SVG `<text>`, or a caption.
 - Booking links must use the branded `https://greytonedigital.com/book`, which
   `_redirects` forwards to the scheduling tool. Never link the scheduling
   tool's own URL directly from the site.
-- Do not treat the founder's name as "missing" or "restore" it during design
-  or copy passes. Its absence is intentional.
+- Do not treat the founder's name as "missing" or "restore" it as typed text
+  during design or copy passes. Its absence from the text is intentional.
 
 ## Search visibility must stay ON
 
