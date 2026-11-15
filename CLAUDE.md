@@ -47,6 +47,11 @@ redirects `www` to it).
 - `robots.txt`: search and AI search/answer crawlers allowed; AI model-training
   crawlers (GPTBot, ClaudeBot, CCBot, Applebot-Extended) blocked. Google-Extended
   is intentionally allowed because it also powers Gemini answers (discovery).
+- robots.txt also explicitly allows Google-Extended and disallows the shared
+  `__usage_ai-training` token (owner-approved 2026-11-15).
+- ON HOLD (owner, 2026-11-15): the five proposed SEO pages and the homepage
+  FAQ (draft doc: "Greytone Digital — Priority 2 Content Draft"). Do not build
+  or publish them, or make visible changes, without the owner's approval.
 - JSON-LD (`@graph`: ProfessionalService + WebSite) must stay factual and match
   visible content: no address, no personal name, no invented reviews or prices.
 - Contact form posts to Netlify Forms ("discovery-call", hidden form in

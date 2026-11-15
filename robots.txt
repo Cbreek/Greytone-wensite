@@ -16,4 +16,14 @@ User-agent: CCBot
 User-agent: Applebot-Extended
 Disallow: /
 
+# Gemini: explicitly allowed so Greytone stays eligible for Gemini answers
+# (Google Search and AI Overviews use Googlebot and are unaffected either way).
+User-agent: Google-Extended
+Allow: /
+
+# Shared "no AI training" signal (honored by Anthropic now; Bing from
+# Feb 1, 2027; Google planned for early 2027). Does not affect search.
+User-agent: __usage_ai-training
+Disallow: /
+
 Sitemap: https://greytonedigital.com/sitemap.xml
