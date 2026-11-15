@@ -1,0 +1,12 @@
+# Greytone Launch Standard: private app / dashboard (Netlify _headers format)
+# Every app route is excluded from search results. Authentication still
+# protects the data; noindex is not security.
+/*
+  X-Robots-Tag: noindex, nofollow
+
+# If the project has a PUBLIC landing page at "/", remove the rule above and
+# list the private paths instead, for example:
+# /app/*
+#   X-Robots-Tag: noindex, nofollow
+# /dashboard/*
+#   X-Robots-Tag: noindex, nofollow

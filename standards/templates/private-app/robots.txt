@@ -1,0 +1,9 @@
+# Greytone Launch Standard: private app / dashboard robots.txt
+# App routes are kept out of search with noindex headers (see _headers), NOT
+# with Disallow here: crawlers must be able to fetch a page to see its noindex.
+# Only add Disallow for paths that are never linked anywhere.
+User-agent: *
+Allow: /
+
+# If the project has a public landing page, list it in a sitemap and add:
+# Sitemap: https://example.com/sitemap.xml

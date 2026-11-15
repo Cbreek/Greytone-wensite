@@ -1,5 +1,22 @@
 # Greytone Digital — instructions for every session
 
+## Greytone Launch Standard (mandatory for ALL Greytone work)
+
+Every public-facing website or digital product Greytone builds, for Greytone
+or for a client, must follow `standards/GREYTONE-LAUNCH-STANDARD.md`:
+technical SEO, search-engine readiness, AI-search readiness, Search Console
+and Bing setup (or client handoff steps), pre-launch testing of forms, lead
+capture and booking, and a completed `standards/LAUNCH-CHECKLIST.md`.
+Private apps and dashboards: only approved public pages are indexable; app
+routes are noindexed. The owner does not need to request any of this.
+
+- New project: copy `standards/templates/CLAUDE.md` (fill in Project Facts),
+  `standards/LAUNCH-CHECKLIST.md` and the matching
+  `standards/templates/public-site/` or `private-app/` starters into the new
+  repository at kickoff.
+- Do not retrofit existing client projects without that project's owner's
+  approval.
+
 ## Founder privacy rule (permanent, non-negotiable)
 
 The founder's personal identity must never appear on the public Greytone Digital
@@ -69,7 +86,8 @@ redirects `www` to it).
 
 - `main` is the official permanent source. The live site at greytonedigital.com
   is the top-level site files of this repo (everything except `outreach-os/`,
-  `README.md` and this file), uploaded to the Netlify site
+  `standards/`, `README.md` and this file; `standards/` is documentation and
+  must never be uploaded), uploaded to the Netlify site
   "gregarious-pithivier-a7176c".
 - `outreach-os/` is a separate private tool, built by Netlify site
   "greytone-outreach-os" from the `claude/greytone-website-9Krl8` branch.

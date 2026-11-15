@@ -1,0 +1,50 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://example.com/#business",
+      "name": "Business Name",
+      "url": "https://example.com/",
+      "logo": "https://example.com/logo.png",
+      "image": "https://example.com/og-image.png",
+      "description": "One or two factual sentences matching the site's visible copy.",
+      "email": "hello@example.com",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "email": "hello@example.com",
+        "url": "https://example.com/book",
+        "availableLanguage": "English"
+      },
+      "areaServed": [
+        { "@type": "AdministrativeArea", "name": "County or region" },
+        { "@type": "City", "name": "City" }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Services",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Service name", "description": "What it does for the customer." } }
+        ]
+      },
+      "sameAs": []
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com/#website",
+      "name": "Business Name",
+      "url": "https://example.com/",
+      "publisher": { "@id": "https://example.com/#business" }
+    }
+  ]
+}
+</script>
+<!--
+  Rules: use the closest accurate @type (Organization, LocalBusiness subtype, ProfessionalService, ...).
+  Add "address"/"telephone" ONLY if the client wants them public. Service-area businesses omit the address.
+  "sameAs" = the business's real profiles (LinkedIn company page, Google Business Profile, etc.), never personal profiles unless approved.
+  No ratings, reviews, prices or awards unless real, visible on the page and approved.
+  Validate with Google's Rich Results Test or validator.schema.org before launch.
+-->

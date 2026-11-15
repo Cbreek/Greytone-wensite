@@ -1,0 +1,26 @@
+# Greytone Launch Standard: public website robots.txt
+# Review per project. Replace example.com with the primary domain.
+
+# Search engines and AI search/answer services (Googlebot, Bingbot,
+# OAI-SearchBot, ChatGPT-User, Claude-SearchBot, Claude-User, PerplexityBot,
+# Perplexity-User, Applebot) are allowed.
+User-agent: *
+Allow: /
+
+# AI model-training crawlers (default: blocked; client decision; see CLAUDE.md).
+# Blocking these does not affect search visibility.
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: CCBot
+User-agent: Applebot-Extended
+Disallow: /
+
+# Keep Gemini answers open (Google-Extended also controls Gemini answers).
+User-agent: Google-Extended
+Allow: /
+
+# Shared "no AI training" preference signal.
+User-agent: __usage_ai-training
+Disallow: /
+
+Sitemap: https://example.com/sitemap.xml
